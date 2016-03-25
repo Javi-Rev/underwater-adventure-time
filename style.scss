@@ -5,7 +5,8 @@ $sand-underwater-color: mix($sand-color, $ocean-color, 80%);
 #ocean {
   position:absolute;
   width:100%;
-  min-height:100%;
+  min-height:80%;
+  bottom: 0;
   background-image: -webkit-gradient(
   linear,
   left bottom,

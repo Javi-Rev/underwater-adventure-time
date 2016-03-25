@@ -4,6 +4,7 @@ desc 'Turn the HAML into HTML'
 task :build do
   mkdir_p 'tmp'
   cp 'structure.haml', 'tmp'
+  cp 'index.js',       'tmp'
   cp 'style.scss',     'tmp'
   cp 'index.html.erb', 'tmp'
   Dir.chdir 'tmp'
