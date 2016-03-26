@@ -1,14 +1,27 @@
-task default: :build
+task default: :open
+
+desc 'Open the page'
+task open: :build do
+  sh 'open', 'tmp/index.html'
+end
 
 desc 'Turn the HAML into HTML'
-task :build do
-  mkdir_p 'tmp'
-  cp 'structure.haml', 'tmp'
-  cp 'index.js',       'tmp'
-  cp 'style.scss',     'tmp'
-  cp 'index.html.erb', 'tmp'
-  Dir.chdir 'tmp'
-  sh 'haml structure.haml structure.html'
-  sh 'scss style.scss     style.css'
-  sh 'erb  index.html.erb > index.html'
+task build: 'tmp/index.html'
+
+directory 'tmp'
+
+file 'tmp/index.html' => ['tmp/style.css', 'tmp/structure.html', 'tmp/index.js'] do
+  chdir('tmp') { sh 'erb ../index.html.erb > index.html' }
+end
+
+file 'tmp/structure.html' => ['tmp', 'structure.haml'] do
+  sh 'haml', 'structure.haml', 'tmp/structure.html'
+end
+
+file 'tmp/style.css' => ['tmp', 'style.scss'] do
+  sh 'scss', 'style.scss', 'tmp/style.css'
+end
+
+file 'tmp/index.js' => ['tmp', 'index.js'] do
+  sh 'cp', 'index.js', 'tmp/index.js'
 end
