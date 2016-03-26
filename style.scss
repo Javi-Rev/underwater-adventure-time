@@ -1,11 +1,11 @@
 $sand-color:  #EDCB62;
 $ocean-color: #4ac;
-$sand-underwater-color: mix($sand-color, $ocean-color, 80%);
+$sand-underwater-color: mix($sand-color, $ocean-color, 100%);
 
 #ocean {
   position:absolute;
   width:100%;
-  min-height:80%;
+  min-height:100%;
   bottom: 0;
   background-image: -webkit-gradient(
   linear,
@@ -19,7 +19,7 @@ $sand-underwater-color: mix($sand-color, $ocean-color, 80%);
 .wave{
   background:#a8e3ff;
   display:inline-block;
-  height:60%;
+  height:30%;
   width:10px;
   position:absolute;
   -webkit-animation-name:             dostuff;
