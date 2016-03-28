@@ -1,1 +1,1 @@
-worker: rake server
+web: rake server
