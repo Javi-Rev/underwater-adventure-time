@@ -5,3 +5,5 @@ gem 'rake'
 gem 'rack'
 
 gem 'pry'
+
+gem 'sass'
