@@ -7,3 +7,5 @@ gem 'rack'
 gem 'pry'
 
 gem 'sass'
+
+gem 'haml'
