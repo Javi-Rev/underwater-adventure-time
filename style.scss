@@ -12,6 +12,25 @@ html, body {
   padding: 0;
 }
 
+h1 {
+  background: $sky-color;
+  color: #ff1a1a;
+  top: 100px;
+  border: none;
+  border-width: 0px;
+  font-size: 5em;
+  text-shadow: -5px 5px 0px #ff9900,
+                   -10px 10px 0px #ffff00,
+                   -15px 15px 0px #ffffb3;
+}
+
+.img {
+  position: relative;
+  top: 40px;
+  right: -360px;
+  width: 250px;
+}
+
 .sky {
   background: $sky-color;
   position:   relative;
@@ -22,11 +41,11 @@ html, body {
   height:   100% - $horizon-height;
   bottom:   0;
   background-image: -webkit-gradient(
-    linear,
-    left bottom,
-    left top,
-    color-stop(0.20,  darken($ocean-color, 10%)),
-    color-stop(0.80, lighten($ocean-color, 10%))
+  linear,
+  left bottom,
+  left top,
+  color-stop(0.20,  darken($ocean-color, 10%)),
+  color-stop(0.80, lighten($ocean-color, 10%))
   );
 }
 
@@ -38,7 +57,6 @@ html, body {
   position:   absolute;
   animation:  dostuff 3s infinite ease-in-out;
 }
-
 
 @-webkit-keyframes dostuff{
   0%{
@@ -71,3 +89,4 @@ $hill-height: 80%;
   box-shadow: 4em 1.5em 2em -2em darken($sand-underwater-color, 5%) inset;
   transform: rotate(180deg);
 }
+

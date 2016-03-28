@@ -1,5 +1,10 @@
 task default: :open
 
+desc 'Build and Run Server'
+task server: :build do
+  sh 'bundle', 'exec', 'rackup', '-p', ENV.fetch('PORT', '3005')
+end
+
 desc 'Open the page'
 task open: :build do
   sh 'open', 'tmp/index.html'
