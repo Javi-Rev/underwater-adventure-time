@@ -15,7 +15,6 @@ html, body {
 }
 
 h1 {
-  background: $sky-color;
   color: #ff1a1a;
   top: 90px;
   border: none;
@@ -26,7 +25,15 @@ h1 {
   -15px 15px 0px #ffffb3;
 }
 
-img.castle {
+.clouds {
+  position: absolute;
+  width: 100%;
+  height: 120%;
+  background: $sky-color;
+  animation: scrolling-clouds 8s linear infinite;
+}
+
+.castle {
   position: relative;
   width: 300;
   bottom: -200px;
@@ -120,10 +127,10 @@ img.castle {
   display:    inline-block;
   top:        0;
   position:   absolute;
-  animation:  animate-wave 3s infinite ease-in-out;
+  animation:  animate-wave 4s infinite ease-in-out;
 }
 
-@-webkit-keyframes animate-wave{
+@keyframes animate-wave{
   0%{
     height:0%;
   }
@@ -249,5 +256,14 @@ $radius:   $fish-width*0.2;
   }
   100% {
     transform: scaleY(1);
+  }
+}
+
+@keyframes scrolling-clouds {
+  0% {
+    left: -120%;
+  }
+  100% {
+    left: 200%
   }
 }
