@@ -2,6 +2,7 @@ $sand-color:            #EDCB62;
 $ocean-color:           #4ac;
 $sky-color:             #a8e3ff;
 $sand-underwater-color: mix($sand-color, $ocean-color, 100%);
+$sun-color:             #ffcc00;
 $horizon-height:        30%;
 
 
@@ -16,7 +17,7 @@ html, body {
 h1 {
   background: $sky-color;
   color: #ff1a1a;
-  top: 100px;
+  top: 90px;
   border: none;
   border-width: 0px;
   font-size: 5em;
@@ -37,6 +38,67 @@ img.castle {
   position:   relative;
   height:     $horizon-height;
 }
+
+.sun {
+  background:    $sun-color;
+  position:      relative;
+  top:           -200px;
+  left:          100px;
+  border-radius: 50%;
+  width:         100px;
+  height:        100px;
+  box-shadow:    inset 0px -10px 10px rgba(0, 0, 0, .3), 0px 5px 25px rgba(0, 0, 0, .6);
+}
+
+.sun-eye {
+  background:    white;
+  position:      absolute;
+  border-radius: 50%;
+  width:         30px;
+  height:        40px;
+}
+
+.sun-eye.left {
+  top: 20%;
+  left: 20%
+}
+
+.sun-eye.right {
+  top: 20%;
+  right: 20%
+}
+
+.sun-pupil {
+  background:    black;
+  position:      absolute;
+  border-radius: 50%;
+  width:         22px;
+  height:        33px;
+}
+
+.sun-pupil.left {
+  top: 27%;
+  left: 24%
+}
+
+.sun-pupil.right {
+  top: 27%;
+  right: 24%
+}
+
+.smile {
+  background: black;
+  position:   absolute;
+  width:  70px;
+	height: 30px;
+	border: 6px solid #222;
+	border-top: 0;
+	background: rgba(0,0,0,0);
+	border-radius: 0 0 120px 120px / 0 0 90px 90px;
+	bottom: 15%;
+	left: 10%;
+}
+
 .ocean {
   position: relative;
   height:   100% - $horizon-height;
@@ -106,6 +168,7 @@ $fish-height:   $fish-width/2;
   top:           -25%;
   background:    red;
   animation:     move-fish-horizontal $swim-duration infinite;
+  box-shadow:    inset 0px -10px 10px rgba(0, 0, 0, .3), 0px 5px 25px rgba(0, 0, 0, .6);
 }
 
 $radius:   $fish-width*0.2;
@@ -152,6 +215,7 @@ $radius:   $fish-width*0.2;
   color: red;
   animation: move-fish;
 }
+
 @keyframes move-fish-horizontal {
   0% {
     left: $right-percent;
