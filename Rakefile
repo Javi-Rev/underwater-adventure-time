@@ -1,10 +1,6 @@
 task default: :open
 
-<<<<<<< HEAD
-desc 'Build and run server'
-=======
 desc 'Build and Run Server'
->>>>>>> javi_attempting_cloud_animations
 task server: :build do
   sh 'bundle', 'exec', 'rackup', '-p', ENV.fetch('PORT', '3005')
 end

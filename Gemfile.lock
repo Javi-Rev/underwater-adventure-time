@@ -1,5 +1,4 @@
 GEM
-<<<<<<< HEAD
   remote: http://rubygems.org/
   specs:
     coderay (1.1.0)
@@ -15,26 +14,16 @@ GEM
     sass (3.4.21)
     slop (3.6.0)
     tilt (2.0.2)
-=======
-  specs:
-    rack (1.6.4)
-    rake (11.1.1)
->>>>>>> javi_attempting_cloud_animations
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-<<<<<<< HEAD
   haml
   pry
   rack
   rake
   sass
-=======
-  rack
-  rake
->>>>>>> javi_attempting_cloud_animations
 
 BUNDLED WITH
    1.11.2
