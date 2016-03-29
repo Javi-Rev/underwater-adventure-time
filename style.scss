@@ -26,7 +26,8 @@ h1 {
 
 .img {
   position: absolute;
-  z-index: 9999999;
+  width: 300;
+  bottom: 500px;
 }
 
 .sky {
@@ -53,10 +54,10 @@ h1 {
   display:    inline-block;
   top:        0;
   position:   absolute;
-  animation:  dostuff 3s infinite ease-in-out;
+  animation:  animate-wave 3s infinite ease-in-out;
 }
 
-@-webkit-keyframes dostuff{
+@-webkit-keyframes animate-wave{
   0%{
     height:0%;
   }
