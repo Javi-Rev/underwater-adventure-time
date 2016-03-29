@@ -2,7 +2,8 @@ $sand-color:            #EDCB62;
 $ocean-color:           #4ac;
 $sky-color:             #a8e3ff;
 $sand-underwater-color: mix($sand-color, $ocean-color, 100%);
-$horizon-height:        40%;
+$horizon-height:        30%;
+
 
 html, body {
   width:   100%;
@@ -20,14 +21,15 @@ h1 {
   border-width: 0px;
   font-size: 5em;
   text-shadow: -5px 5px 0px #ff9900,
-                   -10px 10px 0px #ffff00,
-                   -15px 15px 0px #ffffb3;
+  -10px 10px 0px #ffff00,
+  -15px 15px 0px #ffffb3;
 }
 
-.img {
-  position: absolute;
+img.castle {
+  position: relative;
   width: 300;
-  bottom: 500px;
+  bottom: -200px;
+  left:  225px;
 }
 
 .sky {
@@ -89,3 +91,85 @@ $hill-height: 80%;
   transform: rotate(180deg);
 }
 
+$left-percent:  20%;
+$right-percent: 80%;
+$flip-percent:  10%;
+$swim-duration: 5s;
+$fish-width:    200px;
+$fish-height:   $fish-width/2;
+
+.blowfish {
+  position:      relative;
+  width:         $fish-width;
+  height:        $fish-height;
+  border-radius: $fish-height/2;
+  top:           -25%;
+  background:    red;
+  animation:     move-fish-horizontal $swim-duration infinite;
+}
+
+$radius:   $fish-width*0.2;
+.eye {
+  position:      absolute;
+  left:          $fish-width*0.12;
+  top:           $fish-height*0.15;
+  width:         $radius;
+  height:        $radius;
+  background:    white;
+  border-radius: $fish-width;
+}
+.pupil {
+  position:      absolute;
+  left:          $fish-width*0.12;
+  top:           $fish-height*0.15;
+  width:         30px;
+  height:        30px;
+  background:    black;
+  border-radius: 60px;
+}
+.tailfin {
+  position: relative;
+  right: -200px;
+  top: 20px;
+  width: 0;
+  height: 0;
+  border-top: 30px solid transparent;
+  border-right: 60px solid red;
+  border-bottom: 40px solid transparent;
+  color: red;
+  animation: move-fish;
+}
+
+.dorsalfin {
+  position: relative;
+  right: -100px;
+  top: -100px;
+  width: 0;
+  height: 0;
+  border-top: 30px solid transparent;
+  border-right: 30px solid red;
+  border-bottom: 0px solid transparent;
+  color: red;
+  animation: move-fish;
+}
+@keyframes move-fish-horizontal {
+  0% {
+    left: $right-percent;
+  }
+  #{50% - $flip-percent} {
+    left: $left-percent;
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(-1);
+    left: $left-percent;
+  }
+  #{100% - $flip-percent} {
+    transform: scaleX(-1);
+    left: $right-percent;
+  }
+  100% {
+    transform: scaleX(1);
+    left: $right-percent;
+  }
+}
