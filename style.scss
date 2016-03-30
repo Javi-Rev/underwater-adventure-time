@@ -194,7 +194,7 @@ $hill-height: 80%;
   right:    20%;
 }
 
-$left-percent:  20%;
+$left-percent:  40%;
 $right-percent: 80%;
 $flip-percent:  10%;
 $swim-duration: 5s;
@@ -301,42 +301,49 @@ $radius:   $fish-width*0.2;
 }
 
 
-@function jelly($pixel-list, $colors: $colors, $grid: $grid-jelly) {
+@function jelly($pixel-list, $colors, $grid, $pixel-width, $pixel-height) {
   $shadows: ();
   $row: 0;
   $col: 1;
- 
+
   @for $i from 1 through length($pixel-list) {
     @if( nth($pixel-list,$i) > 0 ) {
-      $shadows: append($shadows, ($col * 1px) ($row * 1px) 0 map-get($colors,nth($pixel-list,$i)), "comma");
-        }
- 
-        @if($i % $grid == 0) {
-         $row: $row+1;
-          $col: 0;
-        }
- 
-        $col: $col + 1;
-   }
+      $shadows: append($shadows,
+                       ($col * $pixel-width)
+                         ($row * $pixel-height)
+                         0
+                         map-get($colors,nth($pixel-list,$i)),
+                       "comma");
+    }
 
-   @return $shadows;
-   
+    @if($i % $grid == 0) {
+      $row: $row+1;
+      $col: 0;
+    }
+
+    $col: $col + 1;
+  }
+
+  @return $shadows;
+
 }
 
 
 .jellyfish {
-  position: relative;
-  width: 1px;
+  position: absolute;
+  width:  1px;
   height: 1px;
-  margin: 50px;
- 
-  transform: scale(20);
- 
-  animation: move 4s ease-in 2s alternate infinite;
-  box-shadow: jelly($jelly, $colors-jelly, $grid-jelly);
- 
+  left:   5%;
+  top:    20%;
+
+  z-index:   1;
+  transform: scale(5);
+
+  animation: jelly-jiggle 2s alternate infinite;
+  box-shadow: jelly($jelly, $colors-jelly, $grid-jelly, 1px, 1px);
+
 }
- 
-@keyframes move {
+
+@keyframes jelly-jiggle {
   100% { transform: scale(10) translateX(15px);}
 }
