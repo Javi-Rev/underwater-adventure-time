@@ -148,7 +148,7 @@ h1 {
 
 .wave{
   background: $sky-color;
-  width:      10px;
+  width:      1.1%;
   display:    inline-block;
   top:        0;
   position:   absolute;
@@ -156,6 +156,7 @@ h1 {
 }
 
 @keyframes animate-wave{
+
   0%{
     height:0%;
   }
@@ -164,6 +165,19 @@ h1 {
   }
   100%{
     height:0%;
+  }
+}
+
+@keyframes animate-boat {
+
+  0%{
+    top:-40%;
+  }
+  50%{
+    top: -50%;
+  }
+  100%{
+    top:-40%;
   }
 }
 
@@ -347,3 +361,58 @@ $radius:   $fish-width*0.2;
 @keyframes jelly-jiggle {
   100% { transform: scale(10) translateX(15px);}
 }
+
+$full-boat-height: 300px;
+$hull-width: 70%;
+$boat-color: #A75;
+$sail-width: 32%;
+$mast-height: 65%;
+$topsail-position: 80px;
+
+.boat {
+  height: $full-boat-height;
+  width: $full-boat-height / 1.5;
+  position: absolute;
+  left: 50%;
+  z-index: 1;
+  animation:  animate-boat 4s infinite ease-in-out;
+}
+
+.mast {
+  width: 3%;
+  height: $mast-height;
+  background: brown;
+  position: absolute;
+  bottom: ($hull-width/3);
+  left: ($hull-width/2)- 3%;
+}
+@mixin sail($sail-width, $mast-height) {
+  border-radius: 0 100% 100% 0%;
+  box-shadow: 35px 0px 0px white;
+  width: $sail-width;
+  height: $mast-height / 2;
+}
+
+.sail.top {
+  @include sail($sail-width, $mast-height);
+  position: absolute;
+  bottom: ($hull-width/3)+($mast-height/2);
+  left: ($hull-width/2) - $sail-width + 10%;
+}
+
+.sail.bottom {
+  @include sail($sail-width, $mast-height);
+  position: absolute;
+  bottom: ($hull-width/3);
+  left: ($hull-width/2) - $sail-width + 10%;
+}
+
+.hull {
+  position: absolute;
+  width: $hull-width;
+  height: $hull-width/3;
+  border-radius: 0 0 $hull-width $hull-width;
+  background: $boat-color;
+  bottom: 0;
+}
+

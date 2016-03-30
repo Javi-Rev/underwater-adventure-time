@@ -9,6 +9,13 @@
     .sun-pupil.right
     .smile
 .ocean
+  - 100.times do |i|
+    .wave(style="animation-delay: #{i/100.0}s; left: #{i}%;")
+  .boat
+    .mast
+    .sail.top
+    .sail.bottom
+    .hull
   .blowfish
     .tailfin
     .dorsalfin
