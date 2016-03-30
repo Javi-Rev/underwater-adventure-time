@@ -171,13 +171,13 @@ h1 {
 @keyframes animate-boat {
 
   0%{
-    top:-40%;
+    top:-50%;
   }
   50%{
-    top: -50%;
+    top: -40%;
   }
   100%{
-    top:-40%;
+    top:-50%;
   }
 }
 
@@ -370,12 +370,14 @@ $mast-height: 65%;
 $topsail-position: 80px;
 
 .boat {
+  $position:  0.8;
   height: $full-boat-height;
   width: $full-boat-height / 1.5;
   position: absolute;
-  left: 50%;
+  left: $position * 100%;
   z-index: 1;
   animation:  animate-boat 4s infinite ease-in-out;
+  animation-delay: -($position * 1s - 0.25s);
 }
 
 .mast {
