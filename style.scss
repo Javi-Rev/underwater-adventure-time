@@ -33,13 +33,6 @@ h1 {
   animation: scrolling-clouds 15s linear infinite;
 }
 
-.castle {
-  position: absolute;
-  height: 50%;
-  bottom: 17%;
-  left:  225px;
-}
-
 .sky {
   background: $sky-color;
   position:   relative;
@@ -162,6 +155,13 @@ $hill-height: 80%;
   top: -30%;
   box-shadow: 4em 1.5em 2em -2em darken($sand-underwater-color, 5%) inset;
   transform: rotate(180deg);
+}
+
+.castle {
+  position: absolute;
+  width:    20%;
+  bottom:   0;
+  right:    20%;
 }
 
 $left-percent:  20%;
