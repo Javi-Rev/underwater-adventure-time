@@ -34,9 +34,9 @@ h1 {
 }
 
 .castle {
-  position: relative;
+  position: absolute;
   width: 300;
-  bottom: -200px;
+  bottom: 17%;
   left:  225px;
 }
 
@@ -44,6 +44,7 @@ h1 {
   background: $sky-color;
   position:   relative;
   height:     $horizon-height;
+  overflow:   hidden;
 }
 
 .sun {
