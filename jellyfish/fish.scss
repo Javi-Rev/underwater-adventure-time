@@ -1,0 +1,78 @@
+/* Itsa me! Jellyfish! */
+
+
+$color: rgb(255,255,255);
+$color-secondary: rgb(200,200,200);
+$color-background:rgba(0,0,0,1);
+$grid-jelly: 15;
+
+$colors-jelly: (
+  1: $color,
+  2: $color-secondary,
+  3: $color-background
+);
+
+$jelly:
+3,3,3,3,3,3,1,1,1,3,3,3,3,3,3,
+3,3,3,3,1,2,2,2,2,2,1,3,3,3,3,
+3,3,3,1,2,1,1,1,1,1,2,1,3,3,3,
+3,1,1,2,1,1,1,1,1,1,1,2,1,1,3,
+1,1,2,1,1,1,1,1,1,1,1,1,2,1,1,
+3,3,3,1,0,0,0,0,0,0,0,1,3,3,3,
+3,3,3,3,1,1,0,0,0,1,1,3,3,3,3,
+3,3,3,1,0,0,1,0,1,0,0,1,3,3,3,
+3,3,3,1,0,0,1,0,1,0,0,1,3,3,3,
+3,3,1,0,1,1,0,1,0,1,1,0,1,3,3,
+3,3,1,1,2,2,1,1,1,2,2,1,1,3,3,
+3,3,2,1,3,1,1,3,1,1,3,1,2,3,3,
+3,3,1,1,3,2,1,3,1,2,3,1,1,3,3,
+3,3,2,1,3,1,1,0,1,1,0,1,2,3,3,
+3,3,1,1,3,2,1,3,1,2,3,1,1,3,3,
+3,3,2,1,3,3,1,3,1,3,3,1,2,3,3,
+3,3,3,1,3,3,1,3,1,3,3,1,3,3,3;
+ 
+  
+
+
+@function jelly($pixel-list, $colors: $colors, $grid: $grid-jelly) {
+  $shadows: ();
+  $row: 0;
+  $col: 1;
+  
+  @for $i from 1 through length($pixel-list) {
+    @if( nth($pixel-list,$i) > 0 ) {
+      $shadows: append($shadows, ($col * 1px) ($row * 1px) 0 map-get($colors,nth($pixel-list,$i)), 'comma');
+    }
+    
+    @if($i % $grid == 0) {
+      $row: $row+1;
+      $col: 0;
+    }
+    
+    $col: $col + 1;
+  }
+  
+  @return $shadows;
+}
+
+body {
+  background-color: #000000;  
+}
+
+.jellyfish {
+  position: relative;
+  width: 1px;
+  height: 1px;
+  margin: 50px;
+  
+  transform: scale(20);
+  
+  animation: move 4s ease-in 2s alternate infinite;
+  box-shadow: jelly($jelly, $colors-jelly, $grid-jelly);
+  
+}
+
+@keyframes move {
+  100% { transform: scale(10) translateX(15px);}
+}
+
