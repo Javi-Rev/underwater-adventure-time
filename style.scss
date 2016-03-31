@@ -282,6 +282,8 @@ $radius:   $fish-width*0.2;
   50% {
     transform: scaleX(-1);
     left: $left-percent;
+    border-radius: 50%;
+    height: 200px;
   }
   #{100% - $flip-percent} {
     transform: scaleX(-1);
